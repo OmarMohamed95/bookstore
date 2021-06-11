@@ -6,7 +6,7 @@ class RouteManager {
     getUrlByRouteName(routeName: string): string {
         let url: string|undefined;
         for (const [groupName, routeGroup] of Object.entries(routes)) {
-            routeGroup.routes.forEach((route: Route, key) => {
+            routeGroup.routes.forEach((route: Route) => {
                 if (routeName === route.name) {
                     url = routeGroup.prefix.concat(route.url).replace(/\/$/, "");
                 }
