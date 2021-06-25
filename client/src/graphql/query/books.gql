@@ -1,0 +1,6 @@
+query books($limit: Int!) {
+    books(limit: $limit) {
+        id,
+        name
+    }
+}

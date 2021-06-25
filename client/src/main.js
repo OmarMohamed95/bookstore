@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import { createProvider } from './vue-apollo'
+import 'regenerator-runtime/runtime'
 
 Vue.config.productionTip = false
 
@@ -11,5 +13,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
+  apolloProvider: createProvider(),
   template: '<App/>'
 })
