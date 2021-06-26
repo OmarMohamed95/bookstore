@@ -11,13 +11,13 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      user_id: {
+      user: {
         type: Sequelize.INTEGER
       },
-      author_id: {
+      author: {
         type: Sequelize.INTEGER
       },
-      pages_count: {
+      pagesCount: {
         type: Sequelize.INTEGER
       },
       price: {

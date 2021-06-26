@@ -3,16 +3,16 @@ import {
     DataTypes,
     Model,
     Association,
-    HasManyGetAssociationsMixin,
-    HasManyAddAssociationMixin,
-    HasManyHasAssociationMixin,
-    HasManyCountAssociationsMixin,
-    HasManyCreateAssociationMixin
+    HasOneGetAssociationMixin,
+    HasOneCreateAssociationMixin,
 } from 'sequelize';
 import sequelize from '../database/connection'
+import Author from './author';
+import Genre from './genre'
 
 class Book extends Model {
-    
+    public getGenre!: HasOneGetAssociationMixin<Genre>;
+	public createGenre!: HasOneCreateAssociationMixin<Genre>;
 }
 
 Book.init({
@@ -26,11 +26,11 @@ Book.init({
         type: DataTypes.STRING(255),
         allowNull: false,
     },
-    user_id: {
+    user: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    author_id: {
+    authorId: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -38,9 +38,12 @@ Book.init({
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    genra: {
+    genreId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        references: {
+          model: Genre,
+          key: 'id'
+        }
     }
 }, {
     sequelize,
@@ -70,5 +73,13 @@ export interface BookInstance {
     genra: number;
 
 }
+
+// Genre association
+Genre.hasMany(Book);
+Book.belongsTo(Genre);
+
+// Author association
+Author.hasMany(Book);
+Book.belongsTo(Author);
 
 export default Book;
