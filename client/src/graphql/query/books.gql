@@ -1,6 +1,12 @@
 query books($limit: Int!) {
     books(limit: $limit) {
         id,
-        name
+        name,
+        author {
+            name
+        },
+        genre {
+            name
+        }
     }
 }
