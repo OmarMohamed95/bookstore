@@ -10,15 +10,15 @@ export const graphqlGroup = {
     ]
 }
 
-export const defaultGroup = {
-    prefix: '',
-    routes: [
-        {
-            url: '/',
-            httpMethod: 'get',
-            controller: 'DefaultController',
-            method: 'index',
-            name: 'default_index',
-        }
-    ]
-}
+// export const defaultGroup = {
+//     prefix: '',
+//     routes: [
+//         {
+//             url: '/',
+//             httpMethod: 'get',
+//             controller: 'DefaultController',
+//             method: 'index',
+//             name: 'default_index',
+//         }
+//     ]
+// }

@@ -3,5 +3,6 @@
         "port": 8080
     },
 
-    "controller_path": "../controllers/"
+    "controller_path": "../controllers/",
+    "middleware_path": "../middlewares/"
 }
