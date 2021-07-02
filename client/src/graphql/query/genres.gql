@@ -1,0 +1,6 @@
+query genres($limit: Int!) {
+    genres(limit: $limit) {
+        id,
+        name
+    }
+}
