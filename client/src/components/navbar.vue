@@ -1,25 +1,24 @@
 <template>
 	<div>
         <b-navbar toggleable="lg" type="dark" variant="dark">
-            <b-navbar-brand href="#">Bookstore</b-navbar-brand>
+            <b-navbar-brand href="/">Bookstore</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
                     <b-nav-item-dropdown text="Browse" right>
-                        <ApolloQuery
-                        :query="require('../graphql/query/genres.gql')"
-                        :variables="{ limit }"
-                        >
-                            <template v-slot="{ result: { data } }">
-                                <div v-if="data" class="result apollo">
-                                    <div v-for="genre in data.genres" :key="genre.id">
-                                        <b-dropdown-item :href="genre.id">{{ genre.name }}</b-dropdown-item>
-                                    </div>
-                                </div>
-                            </template>
-                        </ApolloQuery>
+                        <div v-if="genres.loading">
+                            loading...
+                        </div>
+                        <div v-else-if="genres.data">
+                            <div v-for="genre in genres.data" :key="genre.id">
+                                <b-dropdown-item :href="`/genre/${genre.id}`">{{ genre.name }}</b-dropdown-item>
+                            </div>
+                        </div>
+                        <div v-else>
+                            No genres found.
+                        </div>
                     </b-nav-item-dropdown>
                     <b-nav-item href="#">My Books</b-nav-item>
                 </b-navbar-nav>
@@ -46,18 +45,27 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
 	name: 'navbar',
 	data () {
 		return {
-			limit: 20
-		}
+
+        }
+	},
+	computed: {
+        ...mapGetters({
+            'genres': 'getGenres'
+        })
 	},
 	methods: {
-
+        ...mapActions({
+            'getGenres': 'getGenres'
+        })
 	},
 	created () {
-
+        this.getGenres()
 	}
 }
 </script>

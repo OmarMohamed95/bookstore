@@ -1,36 +1,46 @@
 <template>
 	<div>
-		<ApolloQuery
-			:query="require('../graphql/query/books.gql')"
-			:variables="{ limit }"
-		>
-			<template v-slot="{ result: { data } }">
-				<div v-if="data" class="result apollo">
-					<div v-for="book in data.books" :key="book.id">
-						<p>{{ book.name }}</p>
-						<small>{{ book.author.name }}</small> |
-						<small>{{ book.genre.name }}</small>
-						<hr>
-					</div>
-				</div>
-			</template>
-		</ApolloQuery>
+		<div v-if="books.loading">
+			loading...
+		</div>
+		<div v-else-if="books.data">
+			<div v-for="book in books.data" :key="book.id">
+				<p>{{ book.name }}</p>
+				<small>{{ book.author.name }}</small> |
+				<small>{{ book.genre.name }}</small>
+				<br>
+				<b>Price: {{ book.price }}</b>
+				<hr>
+			</div>
+		</div>
+		<div v-else>
+			No books found.
+		</div>
 	</div>
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
+
 export default {
-	name: 'HelloWorld',
+	name: 'home',
 	data () {
 		return {
-			limit: 5
+
 		}
 	},
+	computed: {
+		...mapGetters({
+			'books': 'getBooks'
+		})
+	},
 	methods: {
-
+		...mapActions({
+			'getBooks': 'getBooks'
+		})
 	},
 	created () {
-
+		this.getBooks()
 	}
 }
 </script>
