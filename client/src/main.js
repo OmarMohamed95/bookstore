@@ -9,12 +9,14 @@ import router from './router'
 import { createProvider } from './vue-apollo'
 import 'regenerator-runtime/runtime'
 import './assets/css/app.css'
+import store from './store/store'
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   apolloProvider: createProvider(),

@@ -14,10 +14,12 @@
     "@babel/polyfill": "^7.12.1",
     "@vue/cli-shared-utils": "^4.5.13",
     "axios": "^0.21.1",
+    "bootstrap": "^5.0.2",
     "bootstrap-vue": "^2.17.3",
     "vue": "^2.5.2",
     "vue-apollo": "^3.0.0-beta.11",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.11.5",
