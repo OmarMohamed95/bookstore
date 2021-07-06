@@ -5,6 +5,7 @@ import 'regenerator-runtime/runtime'
 // Views
 import home from '@/views/home'
 import genre from '@/views/genre'
+import book from '@/views/book'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export default new Router({
 			path: '/genre/:id',
 			name: 'genre',
 			component: genre
+		},
+		{
+			path: '/book/:id',
+			name: 'book',
+			component: book
 		}
 	]
 })

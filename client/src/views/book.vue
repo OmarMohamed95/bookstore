@@ -1,17 +1,14 @@
 <template>
 	<div>
-		<div v-if="genre.loading">
+		<div v-if="loading">
 			loading...
 		</div>
-		<div v-else-if="genre.data">
-			<h1>{{ genre.data.name }}</h1>
+		<div v-else-if="book">
+			<h1>{{ book.name }}</h1>
 			<hr>
-			<div v-for="book in genre.data.books" :key="book.id">
-				<a :href="`/book/${book.id}`"><p>{{ book.name }}</p></a>
-				<small>Author: {{ book.author.name }}</small><br>
-				<b>Price: {{ book.price }}</b>
-				<hr>
-			</div>
+			<small>Author: {{ book.author.name }}</small><br>
+			<b>Price: {{ book.price }}</b>
+			<hr>
 		</div>
 		<div v-else>
 			No results found.
@@ -22,7 +19,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 export default {
-	name: 'genre',
+	name: 'book',
 	data () {
 		return {
 
@@ -30,16 +27,17 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			'genre': 'getGenre'
+			'book': 'getBook',
+			'loading': 'getLoading'
 		})
 	},
 	methods: {
 		...mapActions({
-			'getGenre': 'getGenre'
+			'getBook': 'getBook'
 		})
 	},
 	created () {
-		this.getGenre()
+		this.getBook()
 	}
 }
 </script>
