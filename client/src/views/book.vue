@@ -6,7 +6,7 @@
 		<div v-else-if="book">
 			<h1>{{ book.name }}</h1>
 			<hr>
-			<small>Author: {{ book.author.name }}</small><br>
+			<a :href="`/author/${book.author.id}`"><small>Author: {{ book.author.name }}</small></a><br>
 			<b>Price: {{ book.price }}</b>
 			<hr>
 		</div>

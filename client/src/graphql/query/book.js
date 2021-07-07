@@ -7,9 +7,11 @@ export const getBooks = gql`
             name,
             price
             author {
+                id,
                 name
             },
             genre {
+                id,
                 name
             }
         }

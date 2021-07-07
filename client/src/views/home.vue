@@ -6,8 +6,8 @@
 		<div v-else-if="books.data">
 			<div v-for="book in books.data" :key="book.id">
 				<a :href="`/book/${book.id}`"><p>{{ book.name }}</p></a>
-				<small>{{ book.author.name }}</small> |
-				<small>{{ book.genre.name }}</small>
+				<a :href="`/author/${book.author.id}`"><small>{{ book.author.name }}</small></a> |
+				<a :href="`/genre/${book.genre.id}`"><small>{{ book.genre.name }}</small></a>
 				<br>
 				<b>Price: {{ book.price }}</b>
 				<hr>

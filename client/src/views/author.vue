@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<div v-if="genre.loading">
+		<div v-if="loading">
 			loading...
 		</div>
-		<div v-else-if="genre.data">
-			<h1>{{ genre.data.name }}</h1>
+		<div v-else-if="author">
+			<h1>{{ author.name }}</h1>
 			<hr>
-			<div v-for="book in genre.data.books" :key="book.id">
+			<div v-for="book in author.books" :key="book.id">
 				<a :href="`/book/${book.id}`"><p>{{ book.name }}</p></a>
-				<b>Author: </b><a :href="`/author/${book.author.id}`"><b>{{ book.author.name }}</b></a><br>
+				<b>Genre:</b><a :href="`/genre/${book.genre.id}`"><b>{{ book.genre.name }}</b></a><br>
 				<b>Price: {{ book.price }}</b>
 				<hr>
 			</div>
@@ -22,7 +22,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 export default {
-	name: 'genre',
+	name: 'author',
 	data () {
 		return {
 
@@ -30,16 +30,17 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			'genre': 'getGenre'
+			'author': 'getAuthor',
+			'loading': 'getLoading'
 		})
 	},
 	methods: {
 		...mapActions({
-			'getGenre': 'getGenre'
+			'getAuthor': 'getAuthor'
 		})
 	},
 	created () {
-		this.getGenre()
+		this.getAuthor()
 	}
 }
 </script>
