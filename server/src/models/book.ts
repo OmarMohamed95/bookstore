@@ -9,8 +9,20 @@ import {
 import sequelize from '../database/connection'
 import Author from './author';
 import Genre from './genre'
+import User from './user';
 
 class Book extends Model {
+    public id!: number;
+	public name!: string;
+	public user!: User;
+	public authorId!: Author;
+	public price!: number;
+	public genreId!: Genre;
+
+	// timestamps!
+	public readonly createdAt!: Date;
+	public readonly updatedAt!: Date;
+
     public getGenre!: HasOneGetAssociationMixin<Genre>;
 	public createGenre!: HasOneCreateAssociationMixin<Genre>;
 }

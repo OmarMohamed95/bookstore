@@ -7,6 +7,8 @@ import home from '@/views/home'
 import genre from '@/views/genre'
 import book from '@/views/book'
 import author from '@/views/author'
+import register from '@/views/register'
+import login from '@/views/login'
 
 Vue.use(Router)
 
@@ -17,6 +19,16 @@ export default new Router({
 			path: '/',
 			name: 'home',
 			component: home
+		},
+		{
+			path: '/register',
+			name: 'register',
+			component: register
+		},
+		{
+			path: '/login',
+			name: 'login',
+			component: login
 		},
 		{
 			path: '/genre/:id',

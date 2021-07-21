@@ -36,8 +36,14 @@
                             <em>User</em>
                         </template>
                         <b-dropdown-item href="#">Profile</b-dropdown-item>
-                            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
                     </b-nav-item-dropdown>
+                </b-navbar-nav>
+                <b-navbar-nav v-if="isAuth">
+                    <b-nav-item @click="handleLogout">Log out</b-nav-item>
+                </b-navbar-nav>
+                <b-navbar-nav v-else>
+                    <b-nav-item href="/register">Register</b-nav-item>
+                    <b-nav-item href="/login">Log in</b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -56,13 +62,18 @@ export default {
 	},
 	computed: {
         ...mapGetters({
-            'genres': 'getGenres'
+            'genres': 'getGenres',
+            'isAuth': 'getToken'
         })
 	},
 	methods: {
         ...mapActions({
-            'getGenres': 'getGenres'
-        })
+            'getGenres': 'getGenres',
+            'logout': 'logout'
+        }),
+        handleLogout () {
+            this.logout()
+        }
 	},
 	created () {
         this.getGenres()

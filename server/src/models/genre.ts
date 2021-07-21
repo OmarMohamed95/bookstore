@@ -13,6 +13,13 @@ import sequelize from '../database/connection'
 import Book from './book'
 
 class Genre extends Model {
+	public id!: number;
+	public name!: string;
+
+	// timestamps!
+	public readonly createdAt!: Date;
+	public readonly updatedAt!: Date;
+
 	public getBooks!: HasManyGetAssociationsMixin<Book>;
 	public addBook!: HasManyAddAssociationMixin<Book, number>;
 	public hasBook!: HasManyHasAssociationMixin<Book, number>;
