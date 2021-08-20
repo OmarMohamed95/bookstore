@@ -3,5 +3,7 @@
 ### Stack
 - NodeJS
 - Express
+- TypeScript
 - MySQL
 - GraphQL
+- VueJS
